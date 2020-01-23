@@ -5,11 +5,13 @@
  **************/
 
 function updateCoffeeView(coffeeQty) {
-  // your code here
+  const coffeeCounter = document.getElementById(coffee_counter);
+  coffeeCounter.innerText = coffeeQty;
 }
 
 function clickCoffee(data) {
-  // your code here
+  data.coffee += 1;
+  updateCoffeeView(data.coffee)
 }
 
 /**************
