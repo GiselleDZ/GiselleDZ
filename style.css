@@ -3,6 +3,7 @@
 }
 body {
   margin: 0px;
+  /* background-color:  #04005e; */
 }
 .column-container {
   display: flex;
@@ -42,6 +43,16 @@ body {
   user-select: none;
   font-size: 128px;
   cursor: pointer;
+}
+
+/* #coffeeimage{
+  display: flex;
+  size: 20%;
+} */
+
+img.resize {
+  width:20%
+  height: auto;
 }
 
 .counter-container {

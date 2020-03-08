@@ -5,7 +5,34 @@
  **************/
 
 
-function updateCoffeeView(coffeeQty) {
+//  const coffeeStorage = window.localStorage
+
+//  function loadStorage(coffeeStorage, data){
+//    if (coffeeStorage.coffee){
+//      getCoffeeStorage(data)
+//    }
+//  }
+
+//  function setCoffeeSorage (data){
+//   coffeeStorage.setItem('coffee', data.coffee )
+//   coffeeStorage.setItem('producers',data.producers)
+//   coffeeStorage.setItem('totalCPS', data.totalCPS )
+
+// }
+
+// function getCoffeeStorage (data){
+//   data.coffee = coffeeStorage.getItem('coffee')
+//   data.producers = coffeeStorage.getItem('producers')
+//   data.totalCPS = coffeeStorage.getItem('totalCPS')
+// }
+
+// loadStorage(coffeeStorage,data)
+
+
+function updateCoffeeView(coffeeQty, data) {
+  // if (coffeeQty === 0){
+  //   loadStorage(coffeeStorage,data)
+  // }
   let coffeeCounter = document.getElementById('coffee_counter');
   innerText = document.createTextNode(coffeeQty)
   coffeeCounter.appendChild(innerText);
@@ -16,6 +43,7 @@ function updateCoffeeView(coffeeQty) {
 function clickCoffee(data) {
   updateCoffeeView(data.coffee +1)
   data.coffee += 1
+  // setCoffeeSorage (data)
   if (data.coffee >= 100 ){
     renderProducers(data)
   }
@@ -193,6 +221,8 @@ function tick(data) {
   updateCoffeeView(data.coffee)
 }
 
+
+
 /*************************
  *  Start your engines!
  *************************/
@@ -211,6 +241,9 @@ if (typeof process === 'undefined') {
   // Get starting data from the window object
   // (This comes from data.js)
   const data = window.data;
+
+  
+
 
   // Add an event listener to the giant coffee emoji
   const bigCoffee = document.getElementById('big_coffee');
