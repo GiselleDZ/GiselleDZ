@@ -3,7 +3,7 @@ window.data = {
   totalCPS: 0,
   producers: [
     {
-      id: 'Planeraty Pour',
+      id: 'Planerary Pour',
       price: 10,
       unlocked: false,
       cps: 1,
