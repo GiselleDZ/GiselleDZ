@@ -3,84 +3,84 @@ window.data = {
   totalCPS: 0,
   producers: [
     {
-      id: 'chemex',
+      id: 'Planeraty Pour',
       price: 10,
       unlocked: false,
       cps: 1,
       qty: 0
     },
     {
-      id: 'french_press',
+      id: 'Biospheric Fountain',
       price: 50,
       unlocked: false,
       cps: 2,
       qty: 0
     },
     {
-      id: 'mr._coffee',
+      id: 'Orbital Stream',
       price: 100,
       unlocked: false,
       cps: 5,
       qty: 0
     },
     {
-      id: 'ten_cup_urn',
+      id: 'Lunar Waterfall',
       price: 500,
       unlocked: false,
       cps: 10,
       qty: 0
     },
     {
-      id: 'espresso_machine',
+      id: 'Solar Drip',
       price: 1000,
       unlocked: false,
       cps: 20,
       qty: 0
     },
     {
-      id: 'ten_gallon_urn',
+      id: 'Milkier Way',
       price: 5000,
       unlocked: false,
       cps: 50,
       qty: 0
     },
     {
-      id: 'coffeeshop',
+      id: 'Asteroid Brew' ,
       price: 10000,
       unlocked: false,
       cps: 75,
       qty: 0
     },
     {
-      id: 'coffee_factory',
+      id: 'Galaxy Melter',
       price: 50000,
       unlocked: false,
       cps: 100,
       qty: 0
     },
     {
-      id: 'coffee_fountain',
+      id: 'Black Hole Liquifier',
       price: 100000,
       unlocked: false,
       cps: 200,
       qty: 0
     },
     {
-      id: 'coffee_river',
+      id: 'Dark Matter Medium Roast' ,
       price: 500000,
       unlocked: false,
       cps: 500,
       qty: 0
     },
     {
-      id: 'coffee_ocean',
+      id: 'Cosmic Microwave Sludge' ,
       price: 1000000,
       unlocked: false,
       cps: 1000,
       qty: 0
     },
     {
-      id: 'coffee_planet',
+      id: 'SuperVoid Blended Continuum',
       price: 5000000,
       unlocked: false,
       cps: 2000,
