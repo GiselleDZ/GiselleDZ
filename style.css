@@ -3,7 +3,7 @@
 }
 body {
   margin: 0px;
-  /* background-color:  #04005e; */
+  background-color:  #04005e;
 }
 .column-container {
   display: flex;
@@ -36,8 +36,13 @@ body {
 .column-header {
   font-size: 25px;
   position: relative;
-  background-color: white;
+  background-color: #04005e;
   top: 8px;
+  color: #ff2079;
+  font-family: 'Pacifico', cursive;
+  padding-left:  10px;
+  padding-right: 10px;
+  
 }
 #big_coffee {
   user-select: none;
@@ -45,51 +50,59 @@ body {
   cursor: pointer;
 }
 
-/* #coffeeimage{
-  display: flex;
-  size: 20%;
-} */
-
-img.resize {
-  width:20%
-  height: auto;
-}
-
 .counter-container {
   font-size: 30px;
   margin: 10px;
+  color: #ff2079;
+  font-family: 'Pacifico', cursive;
 }
 
 .cps-container {
   font-size: 20px;
+  color: #ff2079;
+  font-family: 'Ubuntu';
 }
 
 #producer_container {
   padding: 10px;
   overflow: auto;
-  border: 2px black solid;
+  border: 2px #ff2079 dashed;
   border-radius: 5px;
+  padding: 20px
 }
 
 .producer {
   margin-bottom: 5px;
   padding: 10px;
-  border: 2px solid grey;
+  border: 2px dashed #e92efb;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
+  background-color: #440bd4;
+  color: #e92efb;
+  font-family: 'Ubuntu';
 }
+
 .producer-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
 }
 
 .producer-title {
   font-size: 20px;
+  color: #ff2079;
+  font-family: 'Ubuntu';
 }
 
 .producer button {
   font-size: 15px;
   width: 50px;
+  background-color: #e92efb;
+  color: #04005e;
+  border: 1px dashed #ff2079;
+  margin: 10px;
+  font-family: 'Pacifico', cursive;
+
 }
