@@ -4,14 +4,21 @@
  *   SLICE 1
  **************/
 
+
 function updateCoffeeView(coffeeQty) {
-  const coffeeCounter = document.getElementById(coffee_counter);
+  let coffeeCounter = document.getElementById('coffee_counter');
+  innerText = document.createTextNode(coffeeQty)
+  coffeeCounter.appendChild(innerText);
   coffeeCounter.innerText = coffeeQty;
+  return coffeeCounter.innerText
 }
 
 function clickCoffee(data) {
-  data.coffee += 1;
-  updateCoffeeView(data.coffee)
+  updateCoffeeView(data.coffee +1)
+  data.coffee += 1
+  if (data.coffee >= 100 ){
+    renderProducers(data)
+  }
 }
 
 /**************
@@ -19,18 +26,41 @@ function clickCoffee(data) {
  **************/
 
 function unlockProducers(producers, coffeeCount) {
-  // your code here
+  return producers.filter(producer => {
+    if (coffeeCount >= (producer.price / 2) || producer.unlocked === true){
+      producer.unlocked = true
+    } 
+    return producer
+  })
 }
 
 function getUnlockedProducers(data) {
-  // your code here
+  let arrOfUnlockedProducers = [];
+  data.producers.filter(producer =>{
+    if (producer.unlocked === true){
+      arrOfUnlockedProducers.push(producer)
+    }
+  })
+  return arrOfUnlockedProducers
 }
 
 function makeDisplayNameFromId(id) {
-  // your code here
+  // return id
+  let lowerCaseId = id.toLowerCase().split('');
+   return lowerCaseId.map((letter, index) =>{
+    if (index === 0 || lowerCaseId[index-1] === '_'){
+      // console.log(letter.toUpperCase())
+      return letter.toUpperCase()
+    } else if (letter === '_'){
+      return ' ';
+    } else {
+      return letter;
+    }
+  }).join('')
 }
 
 // You shouldn't need to edit this function-- its tests should pass once you've written makeDisplayNameFromId
+
 function makeProducerDiv(producer) {
   const containerDiv = document.createElement('div');
   containerDiv.className = 'producer';
@@ -52,43 +82,115 @@ function makeProducerDiv(producer) {
 }
 
 function deleteAllChildNodes(parent) {
-  // your code here
+  const children = parent.childNodes;
+  children.forEach(child =>{
+    parent.removeChild(child)
+  })
+  if (parent.childNodes.length > 0){
+    deleteAllChildNodes(parent)
+  }
 }
 
+
+
+
 function renderProducers(data) {
-  // your code here
+
+  let producerContainer = document.getElementById('producer_container')
+  let producersInData = data.producers
+  let coffeeCounter = data.coffee
+
+  unlockProducers(producersInData,coffeeCounter)
+
+  unlockedProducers = getUnlockedProducers(data)
+
+  deleteAllChildNodes(producerContainer)
+
+  unlockedProducers.forEach(producer =>{
+    producerContainer.appendChild(makeProducerDiv(producer))
+    // producerContainer.innerText += producer.id
+  })
 }
+
+
+
+
+
+
 
 /**************
  *   SLICE 3
  **************/
 
 function getProducerById(data, producerId) {
-  // your code here
+  let producerRetrived
+  data.producers.filter(producer =>{
+    if (producer.id === producerId) {
+      producerRetrived = producer
+    }
+  })
+  return producerRetrived
 }
 
 function canAffordProducer(data, producerId) {
-  // your code here
+  let producerCompare = getProducerById(data,producerId)
+  // console.log(typeof producerCompare)
+  if (data.coffee > producerCompare.price ){
+    return true
+  }
+  else {
+    return false
+  }
 }
 
 function updateCPSView(cps) {
-  // your code here
+  const cpsIndicator = document.getElementById('cps')
+  cpsIndicator.innerText = cps
 }
 
 function updatePrice(oldPrice) {
-  // your code here
+  // return oldPrice
+  return Math.floor(oldPrice * 1.25)
 }
 
 function attemptToBuyProducer(data, producerId) {
-  // your code here
+  let currentProducer = getProducerById(data,producerId)
+
+  if (canAffordProducer(data,producerId) === true){
+    currentProducer.qty ++
+    data.coffee -= currentProducer.price
+    currentProducer.price = updatePrice(currentProducer.price);
+    data.totalCPS += currentProducer.cps 
+    updateCPSView(data.totalCPS)
+    return true
+  } else{
+    return false
+  }
 }
 
 function buyButtonClick(event, data) {
-  // your code here
+
+  let producersToCheck = data.producers
+  producersToCheck.filter(p =>{
+    if (event.target.tagName === 'BUTTON'){
+      if (event.target.id.includes(p.id)) {
+        if (attemptToBuyProducer(data, p.id ) === false){
+          window.alert('Not enough coffee!')
+        }
+        else {
+          // attemptToBuyProducer(data, p.id)
+          renderProducers(data)
+          updateCoffeeView(data.coffee)
+        }
+      }
+    }
+  })
 }
 
 function tick(data) {
-  // your code here
+  data.coffee += data.totalCPS
+  renderProducers(data)
+  updateCoffeeView(data.coffee)
 }
 
 /*************************
@@ -147,3 +249,4 @@ else if (process) {
     tick
   };
 }
+
